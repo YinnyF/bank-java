@@ -7,8 +7,8 @@ public class Transaction {
     private final float debit;
     private final float balance;
 
-    public Transaction(float credit, float debit, float balance) {
-        this.date = LocalDate.now();
+    public Transaction(LocalDate date, float credit, float debit, float balance) {
+        this.date = date;
         this.credit = credit;
         this.debit = debit;
         this.balance = balance;
