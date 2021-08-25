@@ -3,30 +3,31 @@ import java.time.LocalDate;
 
 public class Transaction {
     private final LocalDate date;
-    private final float balance;
-    private final float debit;
     private final float credit;
+    private final float debit;
+    private final float balance;
 
-    public Transaction(float debit, float credit, float balance) {
+    public Transaction(float credit, float debit, float balance) {
         this.date = LocalDate.now();
-        this.balance = balance;
-        this.debit = debit;
         this.credit = credit;
+        this.debit = debit;
+        this.balance = balance;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public float getRunningBalance() {
-        return balance;
+    public float getCredit() {
+        return credit;
     }
 
     public float getDebit() {
         return debit;
     }
 
-    public float getCredit() {
-        return credit;
+    public float getRunningBalance() {
+        return balance;
     }
 }
+
