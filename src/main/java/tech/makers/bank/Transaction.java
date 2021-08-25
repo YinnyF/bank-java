@@ -5,11 +5,13 @@ public class Transaction {
     private final LocalDate date;
     private final float balance;
     private final float debit;
+    private final float credit;
 
-    public Transaction(float debit, float balance) {
+    public Transaction(float debit, float credit, float balance) {
         this.date = LocalDate.now();
         this.balance = balance;
         this.debit = debit;
+        this.credit = credit;
     }
 
     public LocalDate getDate() {
@@ -22,5 +24,9 @@ public class Transaction {
 
     public float getDebit() {
         return debit;
+    }
+
+    public float getCredit() {
+        return credit;
     }
 }

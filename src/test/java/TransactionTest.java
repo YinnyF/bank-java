@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TransactionTest {
     @Test
     void testHasADateWhenInitialised() {
-        Transaction subject = new Transaction(0, 1);
+        Transaction subject = new Transaction(0, 0, 1);
         LocalDate currentDate = LocalDate.now();
         assertEquals(currentDate, subject.getDate());
         // perhaps statement should parse the date in the correct format
@@ -15,14 +15,19 @@ public class TransactionTest {
 
     @Test
     void testHasARunningBalance() {
-        Transaction subject = new Transaction(0, 2000);
+        Transaction subject = new Transaction(0, 0, 2000);
         assertEquals(2000, subject.getRunningBalance());
     }
 
     @Test
     void testCanHaveADebitAmount() {
-        Transaction subject = new Transaction(1, 2000);
+        Transaction subject = new Transaction(1, 0, 2000);
         assertEquals(1, subject.getDebit());
     }
 
+    @Test
+    void testCanHaveACreditAmount() {
+        Transaction subject = new Transaction(0, 1, 2000);
+        assertEquals(1, subject.getCredit());
+    }
 }
