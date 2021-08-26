@@ -4,6 +4,7 @@ import tech.makers.bank.BankAccount;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BankAccountTest {
 
@@ -60,6 +61,15 @@ public class BankAccountTest {
             subject.withdraw(-1, date);
         });
     }
+
+    // another way to test the error message
+    @Test
+    void testCannotWithdrawNegativeAmount2() {
+        subject.deposit(1, date);
+        Exception exception = assertThrows(ArithmeticException.class, () -> subject.withdraw(-1, date));
+        assertEquals("Invalid amount", exception.getMessage());
+    }
+
 
     @Test
     void testCannotWithdrawFractionalAmount() {
