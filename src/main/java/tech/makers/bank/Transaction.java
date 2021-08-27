@@ -1,32 +1,36 @@
 package tech.makers.bank;
 import java.time.LocalDate;
 
-public class Transaction {
+public class Transaction implements ITransaction {
     private final LocalDate date;
-    private final float credit;
-    private final float debit;
-    private final float balance;
+    private final double credit;
+    private final double debit;
+    private final double balance;
 
-    public Transaction(LocalDate date, float credit, float debit, float balance) {
+    public Transaction(LocalDate date, double credit, double debit, double balance) {
         this.date = date;
         this.credit = credit;
         this.debit = debit;
         this.balance = balance;
     }
 
+    @Override
     public LocalDate getDate() {
         return date;
     }
 
-    public float getCredit() {
+    @Override
+    public double getCredit() {
         return credit;
     }
 
-    public float getDebit() {
+    @Override
+    public double getDebit() {
         return debit;
     }
 
-    public float getRunningBalance() {
+    @Override
+    public double getRunningBalance() {
         return balance;
     }
 }

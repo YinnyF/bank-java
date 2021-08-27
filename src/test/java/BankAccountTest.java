@@ -75,7 +75,7 @@ public class BankAccountTest {
     void testCannotWithdrawFractionalAmount() {
         subject.deposit(1, date);
         assertThrows(ArithmeticException.class, () -> {
-            subject.withdraw(0.001f, date);
+            subject.withdraw(0.001, date);
         });
     }
 
