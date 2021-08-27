@@ -35,9 +35,7 @@ public class Statement {
     }
 
     private String formatDate(LocalDate date) {
-        String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-        return formattedDate;
+        return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     private String formatAmount(double amount) {

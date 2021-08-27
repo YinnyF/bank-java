@@ -3,7 +3,7 @@ package tech.makers.bank;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // create a bankAccount
         BankAccount bankAccount = new BankAccount();
 
