@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BankAccount {
     private double balance;
-    private ArrayList<String> transactions = new ArrayList();
+    private ArrayList<ITransaction> transactions = new ArrayList();
 
     public BankAccount() {
         this.balance = 0;
@@ -25,7 +25,9 @@ public class BankAccount {
 
         balance += amount;
 
-        transactions.add("deposit");
+        // How to decouple this?
+        ITransaction transaction = new Transaction(date, amount, 0, balance);
+        transactions.add(transaction);
     }
 
     private void checkFunds(double amount) {
@@ -40,10 +42,18 @@ public class BankAccount {
 
         balance -= amount;
 
-        transactions.add("withdrawal");
+        // How to decouple this?
+        ITransaction transaction = new Transaction(date, 0, amount, balance);
+        transactions.add(transaction);
     }
 
-    public ArrayList<String> getTransactions() {
+    public ArrayList<ITransaction> getTransactions() {
         return transactions;
+    }
+
+    public String generateStatement() {
+        // need to isolate this too
+        Statement statement = new Statement();
+        return statement.print(getTransactions());
     }
 }

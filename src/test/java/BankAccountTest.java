@@ -94,5 +94,13 @@ public class BankAccountTest {
     }
 
     // generate statement
+    @Test
+    void testGeneratesStatement() {
+        String result = "date || credit || debit || balance\n01/01/2021 || 1000.00 || - || 1000.00\n01/01/2021 || - || 2.00 || 998.00\n";
+        subject.deposit(1000, date);
+        subject.withdraw(2, date);
+
+        assertEquals(result, subject.generateStatement());
+    }
 
 }
