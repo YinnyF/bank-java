@@ -26,16 +26,12 @@ public class BankAccountTest {
 
     @Test
     void testCannotDepositNegativeAmount() {
-        Assertions.assertThrows(ArithmeticException.class, () -> {
-            subject.deposit(-1, date);
-        });
+        Assertions.assertThrows(ArithmeticException.class, () -> subject.deposit(-1, date));
     }
 
     @Test
     void testCannotDepositFractionalPennies() {
-        Assertions.assertThrows(ArithmeticException.class, () -> {
-            subject.deposit(0.001f, date);
-        });
+        Assertions.assertThrows(ArithmeticException.class, () -> subject.deposit(0.001f, date));
     }
 
     // Withdrawals
@@ -49,17 +45,13 @@ public class BankAccountTest {
     @Test
     void testCannotWithdrawMoreThanBalance() {
         subject.deposit(1, date);
-        Assertions.assertThrows(ArithmeticException.class, () -> {
-            subject.withdraw(2, date);
-        });
+        Assertions.assertThrows(ArithmeticException.class, () -> subject.withdraw(2, date));
     }
 
     @Test
     void testCannotWithdrawNegativeAmount() {
         subject.deposit(1, date);
-        Assertions.assertThrows(ArithmeticException.class, () -> {
-            subject.withdraw(-1, date);
-        });
+        Assertions.assertThrows(ArithmeticException.class, () -> subject.withdraw(-1, date));
     }
 
     // another way to test the error message
@@ -74,9 +66,7 @@ public class BankAccountTest {
     @Test
     void testCannotWithdrawFractionalAmount() {
         subject.deposit(1, date);
-        assertThrows(ArithmeticException.class, () -> {
-            subject.withdraw(0.001, date);
-        });
+        assertThrows(ArithmeticException.class, () -> subject.withdraw(0.001, date));
     }
 
     // Transaction History
