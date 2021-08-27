@@ -1,8 +1,10 @@
 package tech.makers.bank;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class BankAccount {
     private float balance;
+    private ArrayList<String> transactions = new ArrayList();
 
     public BankAccount() {
         this.balance = 0;
@@ -22,6 +24,8 @@ public class BankAccount {
         checkValid(amount);
 
         balance += amount;
+
+        transactions.add("deposit");
     }
 
     private void checkFunds(float amount) {
@@ -35,5 +39,11 @@ public class BankAccount {
         checkFunds(amount);
 
         balance -= amount;
+
+        transactions.add("withdrawal");
+    }
+
+    public ArrayList<String> getTransactions() {
+        return transactions;
     }
 }

@@ -74,8 +74,25 @@ public class BankAccountTest {
     @Test
     void testCannotWithdrawFractionalAmount() {
         subject.deposit(1, date);
-        Assertions.assertThrows(ArithmeticException.class, () -> {
+        assertThrows(ArithmeticException.class, () -> {
             subject.withdraw(0.001f, date);
         });
     }
+
+    // Transaction History
+    @Test
+    void testInitialisedWithEmptyTransactionHistory() {
+        assertEquals(0, subject.getTransactions().size());
+    }
+
+    @Test
+    void testHasATransactionHistory() {
+        subject.deposit(1, date);
+        subject.withdraw(1, date);
+        // Test that the transactions are stored
+        assertEquals(2, subject.getTransactions().size());
+    }
+
+    // generate statement
+
 }
