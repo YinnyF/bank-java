@@ -11,21 +11,21 @@ public class Statement {
         return header;
     }
 
-    public String print(ArrayList<Transaction> transactions) {
+    public String print(ArrayList<ITransaction> transactions) {
         String stringOfTransactions = createStringOfTransactions(transactions);
         return header + stringOfTransactions;
     }
 
-    private String createStringOfTransactions(ArrayList<Transaction> transactions) {
+    private String createStringOfTransactions(ArrayList<ITransaction> transactions) {
         StringBuilder stringOfTransactions = new StringBuilder();
-        for(Transaction transaction : transactions) {
+        for(ITransaction transaction : transactions) {
             stringOfTransactions.append(createTransactionLine(transaction));
         }
 
         return stringOfTransactions.toString();
     }
 
-    private String createTransactionLine(Transaction transaction) {
+    private String createTransactionLine(ITransaction transaction) {
         String date = formatDate(transaction.getDate());
         String credit = formatAmount(transaction.getCredit());
         String debit = formatAmount(transaction.getDebit());
@@ -42,7 +42,7 @@ public class Statement {
 
     private String formatAmount(double amount) {
         String formattedAmount;
-        if (amount == 0 ) {
+        if ( amount == 0 ) {
             formattedAmount = "-";
         } else {
             formattedAmount = String.format("%.2f", amount);
