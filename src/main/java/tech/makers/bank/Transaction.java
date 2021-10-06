@@ -14,22 +14,18 @@ public class Transaction implements ITransaction {
         this.balance = balance;
     }
 
-    @Override
     public LocalDate getDate() {
         return date;
     }
 
-    @Override
     public double getCredit() {
         return credit;
     }
 
-    @Override
     public double getDebit() {
         return debit;
     }
 
-    @Override
     public double getRunningBalance() {
         return balance;
     }
